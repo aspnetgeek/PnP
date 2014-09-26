@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction
+    Id="Ribbon.Documents.New.OneDriveRibbon"
+    Location="CommandUI.Ribbon"
+    >
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition
+          Location="Ribbon.Documents.Groups._children">
+          <Group
+            Id="Ribbon.Documents.OneDrive"
+            Description="OneDrive Actions"
+            Title="OneDrive"
+            Sequence="15"
+            Template="Ribbon.Templates.Flexible2"
+            Command="OneDriveGroupCommand">
+            <Controls Id="Ribbon.Documents.OneDrive.Controls">
+              <Button
+                Id="Ribbon.Documents.OneDrive.Upload"
+                Command="OneDriveRibbon.AddFromOneDriveCommand"
+                Sequence="10"
+                Image32by32="/Images/OneDriveMenu32.png"
+                Image16by16="/Images/OneDriveMenu16.png"
+                Description="Add files to this document library from your OneDrive for Business site."
+                LabelText="Add from OneDrive"
+                TemplateAlias="AOD"
+                Alt="Add files to this document library from your OneDrive for Business site." />
+            </Controls>
+          </Group>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      
+      <CommandUIHandlers>
+        <CommandUIHandler
+          Command="OneDriveRibbon.AddFromOneDriveCommand"
+          CommandAction="javascript:OneDriveRibbon.showDialog('add');"
+          EnabledScript="OneDriveRibbon != null"/>
+        <CommandUIHandler
+          Command="OneDriveRibbon.ShareToOneDriveCommand"
+          CommandAction="javascript:OneDriveRibbon.showDialog('share');"
+          EnabledScript="OneDriveRibbon != null"/>
+      </CommandUIHandlers>
+      
+    </CommandUIExtension>
+  </CustomAction>
+              <!--
+              <Button
+                Id="Ribbon.Documents.OneDrive.Share"
+                Command="OneDriveRibbon.ShareToOneDriveCommand"
+                Sequence="20"
+                Image32by32="~remoteAppUrl/Images/OneDriveMenu32.png"
+                Image16by16="~remoteAppUrl/Images/OneDriveMenu16.png"
+                Description="Share files from this document library to your OneDrive for Business site."
+                LabelText="Share to OneDrive"
+                TemplateAlias="SOD"
+                Alt="Share files from this document library to your OneDrive for Business site." />-->
+</Elements>
